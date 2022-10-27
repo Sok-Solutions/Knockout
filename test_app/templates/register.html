@@ -1,0 +1,208 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Test-Creationtool</title>
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <style>
+    .animate-charcter
+        {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                    -225deg,
+                   #C2B8E0 0%,
+                   #544F61 29%,
+                   #ACA3C7 67%,
+                   #CDC2ED 100%
+            );
+            background-size: auto auto;
+            background-clip: border-box;
+            background-size: 200% auto;
+            color: #ffffff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textclip 2s linear infinite;
+        }
+
+    @keyframes textclip {
+        to {
+            background-position: 200% center;
+        }
+    }
+
+    p  { transition: 0.3s;color: #E6e6e6; font-family: 'Raleway',sans-serif; font-weight: 500;  text-align: center; font-size:120%;}
+    h1 { color: #ffffff; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+    h1:hover{
+        cursor: context-menu;
+    }
+    
+    p:hover{
+        background-color: rgba(0, 0, 0, 0.021);
+        color:#C2B8E0;
+        cursor: pointer;
+
+    }
+    body {line-height: 1.6; height: 100vh; overflow: hidden;}
+    .container {
+        width: 100%; 
+        height: 100%;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+    }
+    .navbar{
+        font-family: 'Raleway',sans-serif;
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        display: flex;
+        width: 100%;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        width: 100%;
+        justify-content: center;
+    }
+    .navbar ul li {
+        margin: 0 1rem;
+        padding: 1rem;
+    }
+    .navbar ul li a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #f4f4f4;
+    }
+    .navbar ul li a:hover {
+        color: C2B8E0;
+    }
+    section {
+		background: url('/static/5026621.jpg') no-repeat center center/cover;;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        height: 100vh;
+        scroll-snap-align: center;
+    }
+    /* Section Images */
+    h3 { transition: 0.3s;color: #E6e6e6; font-family: 'Raleway',sans-serif; font-size: 35px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: left; text-transform: uppercase; text-align: center;}
+    h3:hover {
+        color: #C2B8E0;
+        cursor:context-menu;
+    }
+
+    .feedback-input:focus { border:2px solid #C2B8E0; }
+.feedback-input {
+  color:#E6e6e6;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:2px solid #E6e6e6;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+.feedback-input:hover{
+    border-color: #C2B8E0;
+}
+
+[type="submit"] {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  background: transparent;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+  border:2px solid #E6e6e6;
+}
+[type="submit"]:hover { background:#C2B8E0; }; 
+.button_1{
+	padding-left: 150%;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <section id="login">
+		
+    <h3>REGISTER ACCOUNT</h3>
+	<form method="POST" action="">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            {% render_field form.username class="feedback-input" %}
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+            </div>
+            {% render_field form.email class="feedback-input" %}
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            {% render_field form.password1 class="feedback-input" %}
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            {% render_field form.password2 class="feedback-input" %}
+        </div>
+
+           <div class="d-flex justify-content-center mt-3 login_container">
+             <input class="btn login_btn" type="submit" value="Register">
+             {{form.errors}}
+           </div>
+    </form>
+	<p>Already have an account? <a href="/login/" class="ml-2">Login</a></p>
+	
+</section>
+</div>
+<script>
+    /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+//We start indexing at one because CSRF_token is considered and input field 
+*/
+
+//Query All input fields
+var form_fields = document.getElementsByTagName('input')
+form_fields[1].placeholder='Username..';
+form_fields[2].placeholder='Email..';
+form_fields[3].placeholder='Enter password...';
+form_fields[4].placeholder='Re-enter Password...';
+
+
+for (var field in form_fields){	
+form_fields[field].className += ' form-control'
+}
+</script>
+</body>
+</html>
