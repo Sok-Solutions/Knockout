@@ -27,9 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'localhost'
+    'localhost',
+    '212.227.214.238',
+    'knockout.sok-solutions.de'
 ]
-
+CSRF_TRUSTED_ORIGINS=['http://212.227.214.238','http://knockout.sok-solutions.de']
 
 # Application definition
 

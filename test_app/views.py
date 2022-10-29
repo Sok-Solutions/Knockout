@@ -3,7 +3,7 @@ from cgi import test
 from multiprocessing import context
 import random
 from re import S
-from turtle import right
+
 from unicodedata import name
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
