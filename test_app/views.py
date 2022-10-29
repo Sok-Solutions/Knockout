@@ -12,17 +12,20 @@ from .forms import CreateUserForm
 from .models import gamesss, questions
 import random
 import string
+import numpy as np
 import json
 # Create your views here.
 def play(request):
     print("Started playing")
     quests = questions.objects.all()
     names = gamesss.objects.filter(gameid = request.session['gameid'])
-    print(quests)
-    print(names)
+    rand_questforweb = list(range(0, len(quests)))
+    rand_questforweb = np.random.shuffle(rand_questforweb)
     questforweb = []
+    print(rand_questforweb)
+    print(len(quests))
     i = 0
-    while i < (len(quests)-1):
+    while i < (len(quests)):
         if quests[i].withname == True:
             st = random.uniform(0, len(names))
             zwischen = quests[i].question.replace("#", names[int(st)].name)
@@ -32,6 +35,7 @@ def play(request):
         if quests[i].withname == False:
             questforweb.append([quests[i].question, i])
         i = i+1
+    
     return render(request, 'play.html', {'quests' : questforweb})
 
 def game(request):

@@ -18,7 +18,7 @@
         scroll-snap-align: center;
         background: url('/static/Screenshot_1.png') no-repeat center center/cover;;
     }
-    h3 { transition: 0.3s;color: #E6e6e6; font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: left; text-transform: uppercase; text-align: center;}
+    h3 { transition: 0.3s;color: #E6e6e6; font-family: 'Raleway',sans-serif; font-size: 15px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: left; text-transform: uppercase; text-align: center;}
     h3:hover {
         color: #C2B8E0;
         cursor:context-menu;
@@ -169,9 +169,6 @@ p {
 </head>
 <body>
     <div class="container">
-    <section id="start">
-        <h3>Trinke zwei schlücke</h3>
-    </section>
     {% for i in quests %}
     <section id="{{i.1}}">
         <h3>{{ i.0 }}</h3>

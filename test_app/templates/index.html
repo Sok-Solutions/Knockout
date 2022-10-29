@@ -145,27 +145,6 @@
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   width: 20%;
   background: transparent;
-  border-radius:5px;
-  border:0;
-  cursor:pointer;
-  color:rgba(255, 255, 255, 0.993);
-  font-size:24px;
-  padding-top:10px;
-  padding-bottom:10px;
-  transition: all 0.3s;
-  margin-top:-4px;
-  font-weight:700;
-  border:2px solid #E6e6e6;
-}
-.button_2:hover{
-    background:#C2B8E0;
-}
-[type="submit"] {
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  width: 100%;
-  background: transparent;
-  border-radius:5px;
-  border:0;
   cursor:pointer;
   color:white;
   font-size:24px;
@@ -174,9 +153,26 @@
   transition: all 0.3s;
   margin-top:-4px;
   font-weight:700;
-  border:2px solid #E6e6e6;
+
 }
-[type="submit"]:hover { border-color:#C2B8E0; color: #C2B8E0}; 
+.button_2:hover{
+    background:#C2B8E0;
+}
+[type="submit"] {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  background: transparent;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+
+}
+[type="submit"]:hover { background-color: #C2B8E0}; 
 
     </style>
 </head>
@@ -189,7 +185,7 @@
               </ul>
             </nav>-->
     <section id="start">       
-        <h1 font-weight: 550; class="animate-charcter">Hello {{request.user}}</h1>
+        <h1 font-weight: 550; class="animate-charcter">Knockout-Drunk</h1>
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
         <button class="logout" type="submit" value="Logout">Logout</button>
