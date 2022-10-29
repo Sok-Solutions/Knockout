@@ -1,31 +1,54 @@
 
+from cgi import test
 from multiprocessing import context
 import random
 from turtle import right
+from unicodedata import name
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import mpcfragen, textfragen, usertests
 from django.contrib import messages
 from .forms import CreateUserForm
+from .models import gamesss, questions
+import random
+import string
 # Create your views here.
-
-
-def test(request):
-    numofq = 5
-    questions = mpcfragen.objects.all()
-    quests = random.sample(range(1, 10), numofq)
-    webquests = []
-    answers = []
+def play(request):
+    print("Started playing")
+    quests = questions.objects.all()
+    names = gamesss.objects.filter(gameid = request.session['gameid'])
+    print(quests)
+    print(names)
+    questforweb = []
     i = 0
-    for row in range(1):
-        for col in range(5):
-            i = i+1
-            webquests.append([str(questions[quests[col]].text), str(questions[quests[col]].c1), str(questions[quests[col]].c2), str(questions[quests[col]].c3), str(questions[quests[col]].c4), str(questions[quests[col]].right), i])    
+    while i < (len(quests)-1):
+        if quests[i].withname == True:
+            st = random.randint(0, (len(names)-1))
+            zwischen = quests[i].question.replace("#", names[st].name)
+            print(zwischen)
+            questforweb.append([zwischen, i]) 
+            print(questforweb[i])
+        if quests[i].withname == False:
+            questforweb.append([quests[i].question, i])
+        i = i+1
+    return render(request, 'play.html', {'quests' : questforweb})
+
+def game(request):
+    print("Game started!")
     if request.method == 'POST':
-        answers.append(request.POST.get('answers'))
-    print(answers)
-    return render(request, 'test.html', {'webquests' : webquests})
+        print('Received data:', request.POST['Name'])
+        gameidd = ''
+        if request.session['gameid'] == 'a':
+            gameidd = ''.join(random.choice(string.ascii_lowercase) for i in range(100))
+        else:
+            gameidd = request.session['gameid']
+        gamesss.objects.create(gameid = gameidd, userid = request.user, name = request.POST['Name'])
+        request.session['gameid'] = gameidd
+
+    all_names = gamesss.objects.filter(gameid = request.session['gameid'])
+    
+    return render(request, 'game.html', {'all_names' : all_names})
 def start(request):
+    request.session['gameid']='a'
     numofq = 5
     print("hallo" + str(numofq))
     if request.method == 'POST':

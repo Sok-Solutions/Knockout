@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from test_app.views import start, loginpage, logoutuser, test, register
+from test_app.views import start, loginpage, logoutuser, register, game, play
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('play/', play, name='play'),
     path('login/', loginpage, name='login'),
     path('logout/', logoutuser, name='logout'),
-    path('test/', test, name='test'),
+    path('game/', game, name = 'game'),
     path('register/', register, name = 'register'),
     path('start/', start, name='start')
 ]

@@ -111,6 +111,24 @@ select:hover{
     border-color: #2596be;
 }
 [type="submit"] {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 5%;
+  background: transparent;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:rgba(255, 255, 255, 0.993);
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+  border:2px solid #E6e6e6;
+}
+[type="submit"]:hover { border-color:#C2B8E0; };
+
+button {
 font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   width: 15%;
   background: #E6e6e6;
@@ -125,45 +143,48 @@ font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   margin-top:-4px;
   font-weight:700;
 }
-[type="submit"]:hover { background:#C2B8E0; }; 
+button:hover { background:#C2B8E0; }; 
+p {
+    color: white;
+}
 </style>
 </head>
 <body>
     <div class="container">
-        <nav class="navbar">
-            <ul>
-                <li><a href="#start">Start</a></li>
-                {% for i in webquests %}
-                
-                <li><a href="#{{i.6}}">{{i.6}}</a></li>
-                {% endfor %}
-                <li><a href="#submit">Submit</a></li>
-              </ul>
-            </nav>
     <section id="start">
-        <h1>Dein Test</h1>
-        <h3 class="text-danger mt-3">Quiz über Python Django , Javascript and Jquery</h1>
+        <h1>Knockout</h1>
+        <h3 class="text-danger mt-3">Füge Spieler hinzu:</h3>
+        <button type="submit" onclick="addName()">Add</button>
+        <button type="submit" onclick="startgame()">Start</button>
+        {% for row in all_names %}
+        <h3>{{row.name}}<h3>
+        {% endfor %}
     </section>
-            <form action="/start/" method="POST">
-            {% for i in webquests %}
-            <section id={{i.6}}>
-                    <h3>{{i.0}}</h3>
-                <select name="answers" class="select-wrapper fa fa-angle-down">
-                    <option selected="selected" disabled></option>
-                    <option class="drop" value={{ i.1 }}>{{ i.1 }}</option>
-                    <option class="drop" value={{ i.2 }}>{{ i.2 }}</option>
-                    <option class="drop" value={{ i.3 }}>{{ i.3 }}</option>
-                    <option class="drop" value={{ i.4 }}>{{ i.4 }}</option>
-                </select>  
-        </section>
-    {% endfor %}
-    <section id="submit">
-        <h3>Submit your Answers here</h3>
-        <input type="submit" value="submit">
-    </section>
-        {% csrf_token %}        
+               
         </form>
-
+    </div>
+    <script>
+        function startgame() {
+            window.location.replace("{% url 'play' %}");
+        }
+        function addName() {
+            console.log('test')
+            let Name = prompt('Spieler hinzufügen:');
+            let token = '{{ csrf_token }}';
+            let formData = new FormData();
+            formData.append('Name', Name);
+            formData.append('csrfmiddlewaretoken', token);
+            fetch('/game/', {
+                method: 'POST',
+                body: formData
+            });
+            setTimeout(function(){
+                location.reload();
+}, 100);
+            
+        }
+        
+    </script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-Test-Creationtool</title>
+    <title>Knockout</title>
     
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,15 +93,9 @@
         width: 100%;
         height: 100vh;
         scroll-snap-align: center;
+        background: url('/static/Screenshot_1.png') no-repeat center center/cover;;
     }
     /* Section Images */
-    section#start { 
-        background: url('/static/Screenshot_1.png') no-repeat center center/cover;;
-    }
-
-    section#starttest {
-        background: url('/static/Screenshot_1.png') no-repeat center center/cover;;
-    }
     h3 { transition: 0.3s;color: #E6e6e6; font-family: 'Raleway',sans-serif; font-size: 35px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: left; text-transform: uppercase; text-align: center;}
     h3:hover {
         color: #C2B8E0;
@@ -147,6 +141,25 @@
 .button_1:hover{
     background:#C2B8E0;
 }
+.button_2 {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 20%;
+  background: transparent;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:rgba(255, 255, 255, 0.993);
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+  border:2px solid #E6e6e6;
+}
+.button_2:hover{
+    background:#C2B8E0;
+}
 [type="submit"] {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   width: 100%;
@@ -169,12 +182,12 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar">
+        <!--<nav class="navbar">
             <ul>
-                <li><a href="#start">HOME</a></li>
-                <li><a href="#starttest">GET STARTED</a></li>
+                <li><a href="#starttest">JOIN ROOM</a></li>
+                <li><a href="#create">CREATE ROOM</a></li>
               </ul>
-            </nav>
+            </nav>-->
     <section id="start">       
         <h1 font-weight: 550; class="animate-charcter">Hello {{request.user}}</h1>
         <form action="{% url 'logout' %}" method="post">
@@ -182,15 +195,18 @@
         <button class="logout" type="submit" value="Logout">Logout</button>
     </form>
     </section> 
-    
-    <section id="starttest">
+    <section id="create">
+        <h3>START GAME</h3>
+        <button onclick="createroom()" class="button_2">START</button>
+    </section>
+    <!--<section id="starttest">
     <div class="buttonpinout">
-        <h3>GET STARTED</h3>
-        <p>Schreib einfach wie viele Multiple Choice Fragen dein Test beinhalten soll:</p>
+        <h3>JOIN ROOM</h3>
         <input class="feedback-input" type="number" id="numofq" name="numofq" onblur="getVal()">
-        <button onclick="start()" class="button_1">Start</button>
+        <button onclick="joinroom()" class="button_1">JOIN</button>
     </div>
-</section>
+</section>-->
+
 </div>
 <script>
     function getVal() {
@@ -198,7 +214,8 @@
    console.log(val);
    return val;
    }
-function start(){
+/*
+function joinroom(){
     let numofq = getVal();
     let token = '{{ csrf_token }}';
     let formData = new FormData();
@@ -208,8 +225,19 @@ function start(){
       method: 'POST',
       body: formData
     })
-    window.location.replace("{% url 'test' %}");
-    
+}
+*/
+function createroom(){
+    let numofq = 1;
+    let token = '{{ csrf_token }}';
+    let formData = new FormData();
+    formData.append('numofq', numofq)
+    formData.append('csrfmiddlewaretoken', token)
+    fetch('/test/', {
+      method: 'POST',
+      body: formData
+    })
+    window.location.replace("{% url 'game' %}");
 }
 </script> 
     
