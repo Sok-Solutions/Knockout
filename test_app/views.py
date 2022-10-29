@@ -2,6 +2,7 @@
 from cgi import test
 from multiprocessing import context
 import random
+from re import S
 from turtle import right
 from unicodedata import name
 from django.shortcuts import render, HttpResponse, redirect
@@ -11,6 +12,7 @@ from .forms import CreateUserForm
 from .models import gamesss, questions
 import random
 import string
+import json
 # Create your views here.
 def play(request):
     print("Started playing")
@@ -22,8 +24,8 @@ def play(request):
     i = 0
     while i < (len(quests)-1):
         if quests[i].withname == True:
-            st = random.randint(0, (len(names)-1))
-            zwischen = quests[i].question.replace("#", names[st].name)
+            st = random.uniform(0, len(names))
+            zwischen = quests[i].question.replace("#", names[int(st)].name)
             print(zwischen)
             questforweb.append([zwischen, i]) 
             print(questforweb[i])
@@ -43,10 +45,13 @@ def game(request):
             gameidd = request.session['gameid']
         gamesss.objects.create(gameid = gameidd, userid = request.user, name = request.POST['Name'])
         request.session['gameid'] = gameidd
+    have_names = False
 
     all_names = gamesss.objects.filter(gameid = request.session['gameid'])
-    
-    return render(request, 'game.html', {'all_names' : all_names})
+    if len(all_names) > 0:
+        have_names = True
+        print("Game REady")
+    return render(request, 'game.html', {'all_names' : all_names, 'have_names' : json.dumps(have_names)})
 def start(request):
     request.session['gameid']='a'
     numofq = 5
@@ -55,13 +60,6 @@ def start(request):
         numofq = request.POST.get('numofq')
         request.session['numofquest'] = numofq
         print("hallo" + str(numofq))
-    else:
-        if request.user.is_authenticated:
-            request.session['loginf'] = 0
-            print("test")
-        else:
-            request.session['loginf'] = 1
-            return redirect('/login/')
     return render(request, 'index.html')
 
 def loginpage(request):

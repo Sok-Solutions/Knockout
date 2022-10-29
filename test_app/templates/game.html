@@ -164,8 +164,14 @@ p {
         </form>
     </div>
     <script>
+        var have_names = JSON.parse('{{ have_names|escapejs }}');
         function startgame() {
-            window.location.replace("{% url 'play' %}");
+            if (have_names == true){
+                window.location.replace("{% url 'play' %}");
+            } else {
+                console.log('No Names!')
+            }
+            
         }
         function addName() {
             console.log('test')
