@@ -9,6 +9,10 @@ class questions(models.Model):
     question = models.CharField(max_length=255)
     withname = models.BooleanField(default=False)
 
+class questionshot(models.Model):
+    question = models.CharField(max_length=255)
+    withname = models.BooleanField(default=False)
+
 class gamesss(models.Model):
     gameid = models.CharField(max_length=255)
     userid = models.CharField(max_length=255)

@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dein Test</title>
-    
+    <title>Normalmode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap" rel="stylesheet">
 <style>
+    .color1 {color: #ff2cef;}
+    .color1_1{color:#d824c9 ;}
+    .color2 {color: #ff8067;}
+    .color3 {color: #ffe23c;}
+    .color4 {color: #e2ff98;}
+    .color5 {color: #9afff7;}
     section {
         display: flex;
         flex-direction: column;
@@ -16,14 +24,22 @@
         width: 100%;
         height: 100vh;
         scroll-snap-align: center;
-        background: black no-repeat center center/cover;;
+        background: #022842 no-repeat center center/cover;
     }
-    h3 { transition: 0.3s;color: #E6e6e6; font-family: 'Raleway',sans-serif; font-size: 20px; font-weight: 800; line-height: 20px; margin: 0 0 10px; text-align: left; text-transform: uppercase; text-align: center;}
+    h3 {transition: 0.3s;color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; line-height: 20px; margin: 0 0 10px; text-align: left; text-transform: uppercase; text-align: center;}
     h3:hover {
         color: #C2B8E0;
         cursor:context-menu;
     }
-    h1 { transition: 0.3s;color: #ffffff; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+    .namestext{
+        background-color:#07558a; transition: 0.3s;color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; line-height: 20px; margin: 0 0 10px; text-align: left; text-transform: uppercase; text-align: center;
+    }
+    .namestext:hover{
+        color: #C2B8E0;
+        background-color: transparent;
+        cursor:context-menu;
+    }
+    h1 { transition: 0.3s;color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
     h1:hover{
         cursor: context-menu;
         color: #C2B8E0;
@@ -40,103 +56,85 @@
         scroll-behavior: smooth;
         scroll-snap-type: y mandatory;
     }
-    .navbar{
-        font-family: 'Raleway',sans-serif;
-        position: fixed;
-        top: 0;
-        z-index: 1;
-        display: flex;
-        width: 100%;
-        height: 60px;
-        background: rgba(0, 0, 0, 0.7);
-    }
-    .navbar ul {
-        display: flex;
-        list-style: none;
-        width: 100%;
-        justify-content: center;
-    }
-    .navbar ul li {
-        margin: 0 1rem;
-        padding: 1rem;
-    }
-    .navbar ul li a {
-        text-decoration: none;
-        text-transform: uppercase;
-        color: #f4f4f4;
-    }
-    .navbar ul li a:hover {
-        color: C2B8E0;
-    }
-    body {line-height: 1.6; height: 100vh; overflow: hidden;}
-    .select-wrapper {
-  position: relative;
-  width: 200px;
-}
-.select-wrapper:hover{
-    cursor: pointer;
-}
 
-.select-wrapper::before {
-  cursor: pointer;  
-  color: #fff;
-  font-size: 20px;
-  pointer-events: none;
-  position: absolute;
-  right: 10px;
-  top: 5px;
-}
-
-select {
-  padding-bottom: 14px;
-  color:white;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight:500;
-  font-size: 18px;
-  border-radius: 5px;
-  line-height: 22px;
-  background-color: transparent;
-  border:2px solid white;
-  transition: all 0.3s;
-  padding: 13px;
-  margin-bottom: 15px;
-  width:100%;
-  box-sizing: border-box;
-  outline:0;
-}
-select option {
-  color: black;
-}
-select:hover{
-    border-color: #2596be;
-}
 [type="submit"] {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  width: 5%;
-  background: transparent;
-  cursor:pointer;
-  color:rgba(255, 255, 255, 0.993);
-  font-size:24px;
-  padding-top:10px;
-  padding-bottom:10px;
-  transition: all 0.3s;
-  margin-top:-4px;
-  font-weight:700;
+  appearance: button;
+  background-color: #d69404;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width:50%;
 }
-[type="submit"]:hover { background-color:#C2B8E0; };
 
+[type="submit"]:after {
+  background-clip: padding-box;
+  background-color: #FAAB05;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+[type="submit"]:main,
+[type="submit"]:focus {
+  user-select: auto;
+}
+
+[type="submit"]:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+[type="submit"]:disabled {
+  cursor: auto;
+}
+.names{
+    width: 300px;
+    height: 500px;
+}
 </style>
 </head>
 <body>
     <div class="container">
     <section id="start">
-        <h1>Knockout</h1>
-        <h3 class="text-danger mt-3">Füge Spieler hinzu:</h3>
+        <h3 style="font-size:40px; margin-bottom: 60px;">Normal Mode</h3>
         <button type="submit" onclick="addName()">Add</button>
-        <button type="submit" onclick="startgame()">Start</button>
+        <div class="names">
         {% for row in all_names %}
-        <h3>{{row.name}}<h3>
+        <h3 class="namestext"style="margin-top:20px ; margin-bottom:20px;">{{row.name}}<h3>
         {% endfor %}
+        </div>
+        <button type="submit" onclick="startgame()">Start</button>
     </section>
                
         </form>

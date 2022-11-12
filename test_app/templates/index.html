@@ -4,21 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap" rel="stylesheet">
     <title>Knockout</title>
     
-    
+    {% csrf_token %}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
     <style>
-    .animate-charcter
+.color1 {color: #000000;}
+.color2 {color: #022842;}
+.color3 {color: #0f6193;}
+.color4 {color: #1ba3f0;}
+.color5 {color: #1cedff;}
+/* CSS */
+.button-19 {
+  appearance: button;
+  background-color: #d69404;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #FAAB05;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+    animate-charcter
         {
             text-transform: uppercase;
             background-image: linear-gradient(
                     -225deg,
-                   #C2B8E0 0%,
-                   #544F61 29%,
-                   #ACA3C7 67%,
-                   #CDC2ED 100%
+                    #1ba3f0 0%,
+                    #0f6193 29%,
+                    #1ba3f0 67%,
+                    #0f6193 100%
             );
             background-size: auto auto;
             background-clip: border-box;
@@ -29,7 +98,7 @@
             -webkit-text-fill-color: transparent;
             animation: textclip 2s linear infinite;
         }
-
+        
     @keyframes textclip {
         to {
             background-position: 200% center;
@@ -37,7 +106,7 @@
     }
 
     p  { transition: 0.3s;color: #E6e6e6; font-family: 'Raleway',sans-serif; font-weight: 500;  text-align: center; font-size:120%;}
-    h1 { color: #ffffff; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+    h1 { color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 55px; font-weight: 800; line-height: 72px; margin: 0 0 1px; text-align: center; text-transform: uppercase; }
     h1:hover{
         cursor: context-menu;
     }
@@ -45,7 +114,7 @@
     p:hover{
         background-color: rgba(0, 0, 0, 0.021);
         color:#C2B8E0;
-        cursor: pointer;
+        cursor: context-menu;
 
     }
     body {line-height: 1.6; height: 100vh; overflow: hidden;}
@@ -93,10 +162,10 @@
         width: 100%;
         height: 100vh;
         scroll-snap-align: center;
-        background: url('/static/Screenshot_1.png') no-repeat center center/cover;;
+        background: #022842 no-repeat center center/cover;;
     }
     /* Section Images */
-    h3 { transition: 0.3s;color: #E6e6e6; font-family: 'Raleway',sans-serif; font-size: 35px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: left; text-transform: uppercase; text-align: center;}
+    h3 { transition: 0.3s;color: #FAAB05; font-family: 'Raleway',sans-serif; font-size: 35px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: left; text-transform: uppercase; text-align: center;}
     h3:hover {
         color: #C2B8E0;
         cursor:context-menu;
@@ -122,57 +191,7 @@
 .feedback-input:hover{
     border-color: #C2B8E0;
 }
-.button_1 {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  width: 100%;
-  background: transparent;
-  border-radius:5px;
-  border:0;
-  cursor:pointer;
-  color:rgba(255, 255, 255, 0.993);
-  font-size:24px;
-  padding-top:10px;
-  padding-bottom:10px;
-  transition: all 0.3s;
-  margin-top:-4px;
-  font-weight:700;
-  border:2px solid #E6e6e6;
-}
-.button_1:hover{
-    background:#C2B8E0;
-}
-.button_2 {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  width: 20%;
-  background: transparent;
-  cursor:pointer;
-  color:white;
-  font-size:24px;
-  padding-top:10px;
-  padding-bottom:10px;
-  transition: all 0.3s;
-  margin-top:-4px;
-  font-weight:700;
 
-}
-.button_2:hover{
-    background:#C2B8E0;
-}
-[type="submit"] {
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  width: 100%;
-  background: transparent;
-  cursor:pointer;
-  color:white;
-  font-size:24px;
-  padding-top:10px;
-  padding-bottom:10px;
-  transition: all 0.3s;
-  margin-top:-4px;
-  font-weight:700;
-
-}
-[type="submit"]:hover { background-color: #C2B8E0}; 
 
     </style>
 </head>
@@ -184,18 +203,26 @@
                 <li><a href="#create">CREATE ROOM</a></li>
               </ul>
             </nav>-->
-    <section id="start">       
-        <h1 font-weight: 550; class="animate-charcter">Knockout-Drunk</h1>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-        <button class="logout" type="submit" value="Logout">Logout</button>
-    </form>
+    <section id="start">
+        <!--{% load static %} <img  src="{% static "LongDrink-removebg-preview.png" %}" alt="TitleIMG">    -->
+        <h1 font-weight: 550; class="animate-charcter">Knockout</h1>
+        <h3 style="font-family: 'Montserrat'; margin-top: 0px; font-size: 35px;">DRUNK</h3>
+        <button onclick="createroom()" style="width: 35%;" class="button-19">START</button>
     </section> 
-    <section id="create">
-        <h3>START GAME</h3>
-        <button onclick="createroom()" class="button_2">START</button>
+    <!--<section id="create">
+        <h3 style="margin-bottom:30px ;">Hallo {{request.user}}!</h3>
+        <form style="margin-bottom:20px ;" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+        
+        <button style="margin-bottom:20px ; margin-top: 30px;" class="button-19" value="Login">Login</button>        
+        <form  action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+        
+        <button style="margin-bottom:20px ;" class="button-19" value="Logout">Logout</button>
+    </form>
+        
     </section>
-    <!--<section id="starttest">
+    <section id="starttest">
     <div class="buttonpinout">
         <h3>JOIN ROOM</h3>
         <input class="feedback-input" type="number" id="numofq" name="numofq" onblur="getVal()">
@@ -233,7 +260,7 @@ function createroom(){
       method: 'POST',
       body: formData
     })
-    window.location.replace("{% url 'game' %}");
+    window.location.replace("{% url 'choice' %}");
 }
 </script> 
     
