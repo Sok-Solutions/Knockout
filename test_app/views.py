@@ -10,11 +10,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CreateUserForm
 from .models import gamesss, questions, questionshot
-import random
+import random as rd
 import string
-import numpy as np
 import json
 import pyrebase
+import random
 
 
 
@@ -75,7 +75,6 @@ def postsigin(request):
     request.session['idToken'] = user['idToken']
     return redirect("/start/")
 def play(request):
-    print(request.session['gamemode'])
     print("Started playing")
     quests = None
     if request.session['gamemode'] == "hot":
@@ -83,19 +82,27 @@ def play(request):
         print("hot")
     if request.session['gamemode'] == "normal":
         print("normal")
-        quests = questions.objects.all()  
-    else:
-        print("mode not defined")
-        quests = questions.objects.all()  
+        quests = questions.objects.all()        
     names = gamesss.objects.filter(gameid = request.session['gameid'])
-    rand_questforweb = list(range(0, len(quests)))
-    rand_questforweb = np.random.shuffle(rand_questforweb)
-    questforweb = []
+    rand_questforweb = []
+    i = 0
+    while i < len(quests):
+        rand_questforweb.append(i)
+        i = i+1
+    print("RANDOMQUESTS:")
     print(rand_questforweb)
-    print(len(quests))
+    rand_questforweb = random.sample(list(rand_questforweb), len(rand_questforweb))
+    
+    print("RANDOMQUESTS:")
+    print(rand_questforweb)
+    print("LAENGE" + str(len(quests)))
+    questforweb = []
+    rq = rand_questforweb
     i = 0
     while i < (len(quests)):
-        if quests[i].withname == True:
+        print("ASJDHLKAJSDHAKLSHD" + str(i))
+        print("Withname: " + str(quests[rq[i]].withname))
+        if quests[rq[i]].withname == True:
             st = random.randint(0, (len(names)-1))
             st2 = random.randint(0, (len(names)-1))
             while st2 == st:
@@ -103,9 +110,9 @@ def play(request):
             print("st1:" + str(st) + " st2: " + str(st2))
             name1 = names[int(st)].name
             name2 = names[int(st2)].name
-            if str(quests[i].question).count("#") == 1:
-                if str(quests[i].question).count("§") == 1:
-                    zwischen = quests[i].question.replace("#", name1)
+            if str(quests[rq[i]].question).count("#") == 1:
+                if str(quests[rq[i]].question).count("§") == 1:
+                    zwischen = quests[rq[i]].question.replace("#", name1)
                     print("ZWISCHEN1" + zwischen)
                     zwischen = zwischen.replace("§", name2)
                     print("ZWISCHEN1" + zwischen)
@@ -113,20 +120,23 @@ def play(request):
                     print(questforweb[i])
                     print("Hallo")
                 else:
-                    zwischen = quests[i].question.replace("#", names[int(st)].name)
+                    zwischen = quests[rq[i]].question.replace("#", names[int(st)].name)
                     print(zwischen)
                     questforweb.append([zwischen, i]) 
                     print(questforweb[i])
-
-
-
-        if quests[i].withname == False:
-            questforweb.append([quests[i].question, i])
+        if quests[rq[i]].withname == False:
+            print(quests[rq[i]].question)
+            questforweb.append([quests[rq[i]].question, i])
         i = i+1
-    
-    return render(request, 'play.html', {'quests' : questforweb})
+    print("QUESTSFORWEB:")
+    print(questforweb)
+    last = len(questforweb)
+    print(last)
+    return render(request, 'play.html', {'quests' : questforweb, 'last' : last})
 def hot(request):
     request.session['gamemode'] = "hot"
+    request.session.modified = True
+    print("1" + request.session['gamemode'])
     print("Game started!")
     if request.method == 'POST':
         print('Received data:', request.POST['Name'])
@@ -147,6 +157,7 @@ def hot(request):
     return render(request, 'hot.html', {'all_names' : all_names, 'have_names' : json.dumps(have_names)})
 def game(request):
     request.session['gamemode'] = "normal"
+    request.session.modified = True
     print("Game started!")
     if request.method == 'POST':
         print('Received data:', request.POST['Name'])
@@ -174,8 +185,8 @@ def start(request):
         numofq = request.POST.get('numofq')
         request.session['numofquest'] = numofq
         print("hallo" + str(numofq))
-    user = request.session['idToken']
-    print((auth.get_account_info(user)))
+    #user = request.session['idToken']
+    #print((auth.get_account_info(user)))
     return render(request, 'index.html')
 
 def loginpage(request):
