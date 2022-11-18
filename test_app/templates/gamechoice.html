@@ -171,11 +171,11 @@
         cursor:context-menu;
     }
     
-    p {font-family: 'Raleway', sans-serif;transition: 0.3s;}
+    p {font-family: 'Montserrat', sans-serif;transition: 0.3s;font-weight: bold;}
 .feedback-input:focus { border:2px solid #C2B8E0; }
 .feedback-input {
   color:#E6e6e6;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif; 
   font-weight:500;
   font-size: 18px;
   border-radius: 5px;
@@ -193,12 +193,13 @@
     border-color: #C2B8E0;
 }
 .gamebox{
-    height: 500px;
-    width: 300px;
+    height: 300px;
+    width: 250px;
     border: 3px solid #ffffff;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
+    border-radius: 25px;
 }
 .gamebox:hover{
     background-color: #0b588b;
@@ -212,26 +213,58 @@
     <div class="container">
     <section id="start">
         <div class="gamebox" name="nomalmode" onclick="normalmode()">
-            <h3 style="font-family: 'Montserrat';">Normal</h3>
+            <h3 style="font-family: 'Montserrat';">0815</h3>
             {% load static %} <img style="width:50px ;height:50px;" src="{% static "shot.png" %}" alt="Shot"> 
             <p>Am besten um in einen Abend zu starten!</p>
             <p>3 bis 15 Spieler sind perfekt für diesen Modus!</p>
         </div>
+        <div class="gamebox" name="nomalmode" onclick="komode()">
+            <h3 style="font-family: 'Montserrat';">KO</h3>
+            {% load static %} <img style="width:50px ;height:50px;" src="{% static "boxing-gloves.png" %}" alt="Boxhandschuhe"> 
+            <p>Am besten um in einen Abend zu starten!</p>
+            <p>3 bis 15 Spieler sind perfekt für diesen Modus!</p>
+        </div>
+    </section> 
+    <section id="start2">
         <div class="gamebox" name="Hot" onclick="hotmode()">
             <h3 style="font-family: 'Montserrat';">Hot</h3>
+            {% load static %} <img style="width:50px ;height:50px;" src="{% static "feuer.png" %}" alt="Flamme"> 
+            <p>Heiße Fragen für einen Abend mit deinen Besten!</p>
+            <p>2 bis 8 Spieler sind perfekt für diesen Modus!</p>
+        </div>
+        <div class="gamebox" name="Hot" onclick="duellmode()">
+            <h3 style="font-family: 'Montserrat';">Duell</h3>
             {% load static %} <img style="width:50px ;height:50px;" src="{% static "boxing-gloves.png" %}" alt="Gloves"> 
             <p>Heiße Fragen für einen Abend mit deinen Besten!</p>
             <p>2 bis 8 Spieler sind perfekt für diesen Modus!</p>
         </div>
     </section> 
+    <section id="start3"> //0815, KO, HOT, DUELL, CASUAL
+        <div class="gamebox" name="nomalmode" onclick="casualmode()">
+            <h3 style="font-family: 'Montserrat';">Casual</h3>
+            {% load static %} <img style="width:50px ;height:50px;" src="{% static "shot.png" %}" alt="Shot"> 
+            <p>Am besten um in einen Abend zu starten!</p>
+            <p>3 bis 15 Spieler sind perfekt für diesen Modus!</p>
+        </div>
+    </section> 
+
 
 </div>
 <script>
 function normalmode(){
     window.location.replace("{% url 'game' %}");
 }
+function komode(){
+    window.location.replace("{% url 'ko' %}");
+}
 function hotmode(){
     window.location.replace("{% url 'hot' %}");
+}
+function duellmode(){
+    window.location.replace("{% url 'duell' %}");
+}
+function casualmode(){
+    window.location.replace("{% url 'casual' %}");
 }
 </script> 
     

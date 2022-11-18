@@ -8,7 +8,15 @@ from django.db import models
 class questions(models.Model):
     question = models.CharField(max_length=255)
     withname = models.BooleanField(default=False)
-
+class duelll(models.Model):
+    question = models.CharField(max_length=255)
+    withname = models.BooleanField(default=False)
+class koo(models.Model):
+    question = models.CharField(max_length=255)
+    withname = models.BooleanField(default=False)
+class casuall(models.Model):
+    question = models.CharField(max_length=255)
+    withname = models.BooleanField(default=False)
 class questionshot(models.Model):
     question = models.CharField(max_length=255)
     withname = models.BooleanField(default=False)
@@ -17,5 +25,6 @@ class gamesss(models.Model):
     gameid = models.CharField(max_length=255)
     userid = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
+    M = models.IntegerField(default=10)
     
 

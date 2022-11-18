@@ -1,15 +1,11 @@
 
-from cgi import test
-from multiprocessing import context
-import random
-from re import S
 
-from unicodedata import name
-from django.shortcuts import render, HttpResponse, redirect
+import random
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CreateUserForm
-from .models import gamesss, questions, questionshot
+from .models import questions, questionshot, gamesss, casuall, koo, duelll
 import random as rd
 import string
 import json
@@ -82,7 +78,16 @@ def play(request):
         print("hot")
     if request.session['gamemode'] == "normal":
         print("normal")
-        quests = questions.objects.all()        
+        quests = questions.objects.all()
+    if request.session['gamemode'] == "duell":
+        print("normal")
+        quests = duelll.objects.all()  
+    if request.session['gamemode'] == "ko":
+        print("normal")
+        quests = koo.objects.all()
+    if request.session['gamemode'] == "casual":
+        print("normal")
+        quests = casuall.objects.all()
     names = gamesss.objects.filter(gameid = request.session['gameid'])
     rand_questforweb = []
     i = 0
@@ -155,6 +160,72 @@ def hot(request):
         have_names = True
         print("Game REady")
     return render(request, 'hot.html', {'all_names' : all_names, 'have_names' : json.dumps(have_names)})
+def ko(request):
+    request.session['gamemode'] = "ko"
+    request.session.modified = True
+    print("1" + request.session['gamemode'])
+    print("Game started!")
+    if request.method == 'POST':
+        print('Received data:', request.POST['Name'])
+        gameidd = ''
+        if request.session['gameid'] == 'a':
+            gameidd = ''.join(random.choice(string.ascii_lowercase) for i in range(100))
+        else:
+            gameidd = request.session['gameid']
+        gamesss.objects.create(gameid = gameidd, userid = request.user, name = request.POST['Name'])
+        #database.child("Data").child("Games").push({"gameid" : gameidd})
+        request.session['gameid'] = gameidd
+    have_names = False
+
+    all_names = gamesss.objects.filter(gameid = request.session['gameid'])
+    if len(all_names) > 0:
+        have_names = True
+        print("Game REady")
+    return render(request, 'ko.html', {'all_names' : all_names, 'have_names' : json.dumps(have_names)})
+def duell(request):
+    request.session['gamemode'] = "duell"
+    request.session.modified = True
+    print("1" + request.session['gamemode'])
+    print("Game started!")
+    if request.method == 'POST':
+        print('Received data:', request.POST['Name'])
+        gameidd = ''
+        if request.session['gameid'] == 'a':
+            gameidd = ''.join(random.choice(string.ascii_lowercase) for i in range(100))
+        else:
+            gameidd = request.session['gameid']
+        gamesss.objects.create(gameid = gameidd, userid = request.user, name = request.POST['Name'])
+        #database.child("Data").child("Games").push({"gameid" : gameidd})
+        request.session['gameid'] = gameidd
+    have_names = False
+
+    all_names = gamesss.objects.filter(gameid = request.session['gameid'])
+    if len(all_names) > 0:
+        have_names = True
+        print("Game REady")
+    return render(request, 'duell.html', {'all_names' : all_names, 'have_names' : json.dumps(have_names)})
+def casual(request):
+    request.session['gamemode'] = "casual"
+    request.session.modified = True
+    print("1" + request.session['gamemode'])
+    print("Game started!")
+    if request.method == 'POST':
+        print('Received data:', request.POST['Name'])
+        gameidd = ''
+        if request.session['gameid'] == 'a':
+            gameidd = ''.join(random.choice(string.ascii_lowercase) for i in range(100))
+        else:
+            gameidd = request.session['gameid']
+        gamesss.objects.create(gameid = gameidd, userid = request.user, name = request.POST['Name'])
+        #database.child("Data").child("Games").push({"gameid" : gameidd})
+        request.session['gameid'] = gameidd
+    have_names = False
+
+    all_names = gamesss.objects.filter(gameid = request.session['gameid'])
+    if len(all_names) > 0:
+        have_names = True
+        print("Game REady")
+    return render(request, 'casual.html', {'all_names' : all_names, 'have_names' : json.dumps(have_names)})
 def game(request):
     request.session['gamemode'] = "normal"
     request.session.modified = True

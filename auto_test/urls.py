@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from test_app.views import start, loginpage, logoutuser, register, startt, game, play, firebase, postsigin, postsignup, gamechoice, hot
+from test_app.views import start, loginpage, logoutuser, register, startt, game, play, firebase, postsigin, postsignup, gamechoice, hot, ko, duell, casual
 from django.views.generic.base import TemplateView
 
 
 
 urlpatterns = [
     path('hot/', hot, name='hot'),
+    path('ko/', ko , name='ko'),
+    path('duell/', duell, name='duell'),
+    path('casual/', casual, name='casual'),
     path('choice/', gamechoice, name='choice'),
     path('admin/', admin.site.urls),
     path('play/', play, name='play'),
