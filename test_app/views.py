@@ -5,12 +5,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CreateUserForm
-from .models import questions, questionshot, gamesss, casuall, koo, duelll
+from .models import questions, koo, questionshot, gamesss, casuall, duelll
 import random as rd
 import string
 import json
 import pyrebase
 import random
+from django.http import HttpResponseRedirect
 
 
 
@@ -32,7 +33,10 @@ database = firebase.database()
 
 
 # Create your views here.
-
+def warn(request):
+    request.session['warning'] = 1
+    print('warning was accepted!')
+    return render(request, 'warn.html')
 def firebase(request):
     channel_name = database.child('Data').child('Name').get().val()
     channel_city = database.child('Data').child('City').get().val()
@@ -122,13 +126,11 @@ def play(request):
                     zwischen = zwischen.replace("§", name2)
                     print("ZWISCHEN1" + zwischen)
                     questforweb.append([zwischen, i]) 
-                    print(questforweb[i])
                     print("Hallo")
                 else:
                     zwischen = quests[rq[i]].question.replace("#", names[int(st)].name)
                     print(zwischen)
                     questforweb.append([zwischen, i]) 
-                    print(questforweb[i])
         if quests[rq[i]].withname == False:
             print(quests[rq[i]].question)
             questforweb.append([quests[rq[i]].question, i])
@@ -165,13 +167,10 @@ def ko(request):
     request.session.modified = True
     print("1" + request.session['gamemode'])
     print("Game started!")
+    
     if request.method == 'POST':
         print('Received data:', request.POST['Name'])
-        gameidd = ''
-        if request.session['gameid'] == 'a':
-            gameidd = ''.join(random.choice(string.ascii_lowercase) for i in range(100))
-        else:
-            gameidd = request.session['gameid']
+        gameidd = request.session['gameid']
         gamesss.objects.create(gameid = gameidd, userid = request.user, name = request.POST['Name'])
         #database.child("Data").child("Games").push({"gameid" : gameidd})
         request.session['gameid'] = gameidd
@@ -253,8 +252,10 @@ def start(request):
     request.session['gameid']='a'
 
     if request.method == 'POST':
+
         numofq = request.POST.get('numofq')
         request.session['numofquest'] = numofq
+        request.session['gameid'] = ''.join(random.choice(string.ascii_lowercase) for i in range(100))
         print("hallo" + str(numofq))
     #user = request.session['idToken']
     #print((auth.get_account_info(user)))
@@ -303,3 +304,70 @@ def register(request):
 
 def gamechoice(request):
     return render(request, 'gamechoice.html')
+def addName(request):
+    if request.POST['contentko'] != "":
+        name = request.POST['contentko']
+        gameidd = request.session['gameid']
+        if name == "":
+            print("NAME IS EMPTY")
+        else:
+            gamesss.objects.create(gameid = gameidd, userid = request.user, name = name)
+        return HttpResponseRedirect('/ko/')
+def addNameCasual(request):
+    if request.POST['contentko'] != "":
+        name = request.POST['contentko']
+        gameidd = request.session['gameid']
+        if name == "":
+            print("NAME IS EMPTY")
+        else:
+            gamesss.objects.create(gameid = gameidd, userid = request.user, name = name)
+        return HttpResponseRedirect('/casual/')   
+def addNameDuell(request):
+    if request.POST['contentko'] != "":
+        name = request.POST['contentko']
+        gameidd = request.session['gameid']
+        if name == "":
+            print("NAME IS EMPTY")
+        else:
+            gamesss.objects.create(gameid = gameidd, userid = request.user, name = name)
+        return HttpResponseRedirect('/duell/')   
+def addNameNormal(request):
+    if request.POST['contentko'] != "":
+        name = request.POST['contentko']
+        gameidd = request.session['gameid']
+        if name == "":
+            print("NAME IS EMPTY")
+        else:
+            gamesss.objects.create(gameid = gameidd, userid = request.user, name = name)
+        return HttpResponseRedirect('/game/')   
+def addNameHot(request):
+    if request.POST['contentko'] != "":
+        name = request.POST['contentko']
+        gameidd = request.session['gameid']
+        if name == "":
+            print("NAME IS EMPTY")
+        else:
+            gamesss.objects.create(gameid = gameidd, userid = request.user, name = name)
+        return HttpResponseRedirect('/hot/')   
+
+def deleteTodoView(request, i):
+    y = gamesss.objects.get(id= i)
+    y.delete()
+    return HttpResponseRedirect('/game/') 
+def deleteTodoViewCasual(request, i):
+    y = gamesss.objects.get(id= i)
+    y.delete()
+    return HttpResponseRedirect('/casual/')
+def deleteTodoViewDuell(request, i):
+    y = gamesss.objects.get(id= i)
+    y.delete()
+    return HttpResponseRedirect('/duell/')
+def deleteTodoViewHot(request, i):
+    y = gamesss.objects.get(id= i)
+    y.delete()
+    return HttpResponseRedirect('/hot/')   
+def deleteTodoViewKo(request, i):
+    y = gamesss.objects.get(id= i)
+    y.delete()
+    return HttpResponseRedirect('/ko/') 
+

@@ -225,7 +225,7 @@
             <p>3 bis 15 Spieler sind perfekt für diesen Modus!</p>
         </div>
     </section> 
-    <section id="start2">
+    <!--<section id="start2">
         <div class="gamebox" name="Hot" onclick="hotmode()">
             <h3 style="font-family: 'Montserrat';">Hot</h3>
             {% load static %} <img style="width:50px ;height:50px;" src="{% static "feuer.png" %}" alt="Flamme"> 
@@ -239,14 +239,14 @@
             <p>2 bis 8 Spieler sind perfekt für diesen Modus!</p>
         </div>
     </section> 
-    <section id="start3"> //0815, KO, HOT, DUELL, CASUAL
+    <section id="start3">
         <div class="gamebox" name="nomalmode" onclick="casualmode()">
             <h3 style="font-family: 'Montserrat';">Casual</h3>
             {% load static %} <img style="width:50px ;height:50px;" src="{% static "shot.png" %}" alt="Shot"> 
             <p>Am besten um in einen Abend zu starten!</p>
             <p>3 bis 15 Spieler sind perfekt für diesen Modus!</p>
         </div>
-    </section> 
+    </section>--> 
 
 
 </div>
@@ -258,7 +258,7 @@ function komode(){
     window.location.replace("{% url 'ko' %}");
 }
 function hotmode(){
-    window.location.replace("{% url 'hot' %}");
+    window.location.replace("{% url 'warn' %}");
 }
 function duellmode(){
     window.location.replace("{% url 'duell' %}");

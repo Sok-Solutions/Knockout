@@ -15,12 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from test_app.views import start, loginpage, logoutuser, register, startt, game, play, firebase, postsigin, postsignup, gamechoice, hot, ko, duell, casual
+from test_app.views import start, loginpage, logoutuser, register, startt, game, play, firebase, postsigin, postsignup, gamechoice, hot, ko, duell, casual, warn, addName, addNameCasual, addNameDuell, addNameNormal, addNameHot, deleteTodoView, deleteTodoViewCasual, deleteTodoViewDuell, deleteTodoViewHot, deleteTodoViewKo
 from django.views.generic.base import TemplateView
 
 
 
 urlpatterns = [
+    path('deleteTodoItemCasual/<int:i>/', deleteTodoViewCasual),
+    path('deleteTodoItemDuell/<int:i>/', deleteTodoViewDuell),
+    path('deleteTodoItemHot/<int:i>/', deleteTodoViewHot),
+    path('deleteTodoItemKo/<int:i>/', deleteTodoViewKo),
+    path('deleteTodoItem/<int:i>/', deleteTodoView),
+    path('addNameHot/', addNameHot),
+    path('addNameNormal/', addNameNormal),
+    path('addNameDuell/', addNameDuell),
+    path('addName/', addName),
+    path('addNameCasual/', addNameCasual),
+    path('warn/', warn, name='warn'),
     path('hot/', hot, name='hot'),
     path('ko/', ko , name='ko'),
     path('duell/', duell, name='duell'),

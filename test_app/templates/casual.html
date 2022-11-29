@@ -32,7 +32,7 @@
         cursor:context-menu;
     }
     .namestext{
-        background-color:#07558a; transition: 0.3s;color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; line-height: 20px; margin: 0 0 10px; text-align: left; text-transform: uppercase; text-align: center;
+       transition: 0.3s;color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; line-height: 20px; margin: 0 0 10px; text-align: left; text-transform: uppercase; text-align: center;
     }
     .namestext:hover{
         color: #C2B8E0;
@@ -57,66 +57,21 @@
         scroll-snap-type: y mandatory;
     }
 
-[type="submit"] {
-  appearance: button;
-  background-color: #d69404;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
+[type="submit"]{
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: rgb(34, 190, 34);
+  border:2px solid rgb(34, 190, 34);
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:20%;
   box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: din-round,sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: .8px;
-  line-height: 20px;
-  margin: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  outline: none;
-  overflow: visible;
-  padding: 13px 16px;
-  text-align: center;
-  text-transform: uppercase;
-  touch-action: manipulation;
-  transform: translateZ(0);
-  transition: filter .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width:50%;
-}
-
-[type="submit"]:after {
-  background-clip: padding-box;
-  background-color: #FAAB05;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
-[type="submit"]:main,
-[type="submit"]:focus {
-  user-select: auto;
-}
-
-[type="submit"]:hover:not(:disabled) {
-  filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
-}
-
-[type="submit"]:disabled {
-  cursor: auto;
+  outline:0;
 }
 .names{
     width: 300px;
@@ -181,29 +136,119 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+.feedback-input:focus { border:2px solid #FAAB05; }
+.feedback-input {
+  color:#E6e6e6;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:2px solid #E6e6e6;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:50%;
+  box-sizing: border-box;
+  outline:0;
+}
+.feedback-input:hover{
+    border-color: #C2B8E0;
+}
+.button-19 {
+  appearance: button;
+  background-color: #d69404;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 30%;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #FAAB05;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+.del{
+    color: red;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    height: 30px;
+}
 </style>
 </head>
 <body>
     <div class="container">
     <section id="start">
         <h3 style="font-size:40px; margin-bottom: 60px;">Casual</h3>
-        <button type="submit" onclick="addName()">Add</button>
+        <form action="/addNameCasual/" method = "post">
+          {% csrf_token %}
+          <input required type="text" placeholder="Name..." name="contentko" class="feedback-input">
+          <input type="submit" value="&#10004;">
+        </form>
         <div class="names">
-        {% for row in all_names %}
-        <h3 class="namestext"style="margin-top:20px ; margin-bottom:20px;">{{row.name}}<!--<label class="switch">
-            <input class="messageCheckbox" type="checkbox" checked>
-            <span class="slider round"></span>
-          </label>&nbsp;<M--><h3>
-        {% endfor %}
+          {% for row in all_names %}
+          <form action="/deleteTodoItemCasual/{{row.id}}/" method = "post">{% csrf_token %}
+          <h3 class="namestext"style="margin-top:5px ; margin-bottom:5px;">{{row.name}}
+                  <input type="submit" value="&#10008;" class="del"><h3></form>
+              
+          {% endfor %}
 
         </div>
-        <button type="submit" onclick="startgame()">Start</button>
+        <button class="button-19" type="submit" onclick="startgame()">Start</button>
     </section>
                
         </form>
     </div>
     <script>
-        var have_names = JSON.parse('{{ have_names|escapejs }}');
+      var have_names = JSON.parse('{{ have_names|escapejs }}');
         function startgame() {
             if (have_names == true){
                 window.location.replace("{% url 'play' %}");
@@ -212,23 +257,6 @@ input:checked + .slider:before {
             }
             
         }
-        function addName() {
-            console.log('test')
-            let Name = prompt('Spieler hinzufügen:');
-            let token = '{{ csrf_token }}';
-            let formData = new FormData();
-            formData.append('Name', Name);
-            formData.append('csrfmiddlewaretoken', token);
-            fetch('/casual/', {
-                method: 'POST',
-                body: formData
-            });
-            setTimeout(function(){
-                location.reload();
-}, 100);
-            
-        }
-        
     </script>
 </body>
 
