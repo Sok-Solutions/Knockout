@@ -24,15 +24,7 @@ def warn(request):
     request.session['warning'] = 1
     print('warning was accepted!')
     return render(request, 'warn.html')
-def firebase(request):
-    channel_name = database.child('Data').child('Name').get().val()
-    channel_city = database.child('Data').child('City').get().val()
-    channel_age = database.child('Data').child('Age').get().val()
-    return render(request, 'firebase.html', {
-        "channel_name" : channel_name,
-        "channel_age" : channel_age,
-        "channel_city" : channel_city
-    })
+
 
 def postsignup(request):
     password2 = request.POST.get('password2')
@@ -234,8 +226,6 @@ def game(request):
         print("Game REady")
     return render(request, 'game.html', {'all_names' : all_names, 'have_names' : json.dumps(have_names)})
 def start(request):
-    users = database.child("users").get()
-    print(users.val())
     request.session['gameid']='a'
 
     if request.method == 'POST':
