@@ -26,9 +26,7 @@ SECRET_KEY = 'django-insecure-+@x4m5=qy8qdc4891(_mw+8r+v%n@&zoi5**&*$c5%0ft(nzw7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '*'
-]
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 CSRF_TRUSTED_ORIGINS=['http://212.227.214.238','http://knockout.sok-solutions.de']
 
 # Application definition
