@@ -9,26 +9,13 @@ from .models import questions, koo, questionshot, gamesss, casuall, duelll
 import random as rd
 import string
 import json
-import pyrebase
+
 import random
 from django.http import HttpResponseRedirect
 
 
 
-"""INITIALIZE FIREBASE"""
-config={
-    "apiKey": "AIzaSyDkTGod3Yh0fSlBPGPkdyLbxmYt0fZw9Rw",
-    "authDomain": "knockout-2afbe.firebaseapp.com",
-    "databaseURL": "https://knockout-2afbe-default-rtdb.europe-west1.firebasedatabase.app",
-    "projectId": "knockout-2afbe",
-    "storageBucket": "knockout-2afbe.appspot.com",
-    "messagingSenderId": "85603705850",
-    "appId": "1:85603705850:web:88799d48ecc53bdb6b7a43",
-    "measurementId": "G-VJDQDM84WW"
-}
-firebase = pyrebase.initialize_app(config)
-auth = firebase.auth()
-database = firebase.database()
+
 
 
 
