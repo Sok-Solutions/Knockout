@@ -27,10 +27,7 @@ SECRET_KEY = 'django-insecure-+@x4m5=qy8qdc4891(_mw+8r+v%n@&zoi5**&*$c5%0ft(nzw7
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '212.227.214.238',
-    'knockout.sok-solutions.de'
+    '*'
 ]
 CSRF_TRUSTED_ORIGINS=['http://212.227.214.238','http://knockout.sok-solutions.de']
 
@@ -141,7 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
