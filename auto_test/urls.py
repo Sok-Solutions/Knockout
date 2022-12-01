@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from test_app.views import start, loginpage, logoutuser, register, startt, game, play, firebase, postsigin, postsignup, gamechoice, hot, ko, duell, casual, warn, addName, addNameCasual, addNameDuell, addNameNormal, addNameHot, deleteTodoView, deleteTodoViewCasual, deleteTodoViewDuell, deleteTodoViewHot, deleteTodoViewKo
+from test_app.views import start, loginpage, logoutuser, register, startt, game, play, postsigin, postsignup, gamechoice, hot, ko, duell, casual, warn, addName, addNameCasual, addNameDuell, addNameNormal, addNameHot, deleteTodoView, deleteTodoViewCasual, deleteTodoViewDuell, deleteTodoViewHot, deleteTodoViewKo
 from django.views.generic.base import TemplateView
 
 
@@ -39,7 +39,6 @@ urlpatterns = [
     path('choice/', gamechoice, name='choice'),
     path('admin/', admin.site.urls),
     path('play/', play, name='play'),
-    path('fire/', firebase, name='fire'),
     path('login/', loginpage, name='login'),
     path('logout/', logoutuser, name='logout'),
     path('accounts/', include('allauth.urls')),
