@@ -26,9 +26,9 @@ HASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['knockdrunk.de', 'knockdrunk.com', 'knockdrunk.org', 'knockdrunk.eu']
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS=['https://walrus-app-8urx2.ondigitalocean.app/']
 
 # Application definition
