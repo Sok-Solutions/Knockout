@@ -28,7 +28,7 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['knockdrunk.de', 'knockdrunk.com', 'knockdrunk.org', 'knockdrunk.eu']
 CSRF_TRUSTED_ORIGINS=['https://walrus-app-8urx2.ondigitalocean.app/']
 
 # Application definition
