@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+<style>
+    body{
+        background-color: #022842;
+    }
+    h1 {
+            top: 200px;
+            color: #FAAB05;
+            font-size: 3rem;
+            text-align: center;
+            font-family: sans-serif;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+    h3 
+    {
+        margin-top: 80px;
+        text-align: center;
+        font-size: 2rem;
+        color: #FAAB05;
+        font-family: sans-serif;
+        font-family: 'Lexend Deca', sans-serif;
+    }
+    p {
+        font-family: sans-serif;
+        font-family: 'Lexend Deca', sans-serif;
+        font-size: 1.5rem;
+        text-align: center;
+        color: white;
+
+    }
+    p:hover{
+        cursor: pointer;
+    }
+    .stats{
+        border-radius: 20px;
+        width: 40%;
+        
+        background-color: #055183;
+        
+        margin: auto; 
+        }
+    a:link { text-decoration: none; }
+
+
+    a:visited { text-decoration: none; }
+
+
+    a:hover { text-decoration: none; }
+
+
+    a:active { text-decoration: none; }
+
+
+</style>
+</head>
+<body>
+    <h1>Knockout - Admin Page</h1>
+    <div class="stats">
+    <h3>Main Stats</h3>
+    <p>Games : {{ games }}</p>
+    <p>User : {{ users }}</p>
+    </div>
+    <div class="stats">
+    <h3>Fragen in Spielmodis</h3>
+    <a href="/questiondb1/"><p>0815 : {{ Normal }}</p></a>
+    <a href="/questiondb2/" ><p>Duell : {{ duell }}</p></a>
+    <a href="/questiondb3/"><p>K.O. : {{ KO }}</p></a>
+    <a href="/questiondb4/"><p>Casual : {{ Casual }} </p></a>
+    <a href="/questiondb5/"><p>Hot : {{ Hot }}</p></a>
+    </div>
+    <SCRIPT language="JavaScript">
+        <!--hide
+        var password;
+        var pass1="Sok110516042404!!";
+        var pass2="Lukkas110395!!";
+        var pass3="Alpha498"
+        
+        password=prompt('Please enter your password to view this page!','');
+        
+        if (password==pass1 || password==pass2 || password==pass3)
+          alert('Password Correct! Click OK to enter!');
+        else
+           {
+            window.location.replace("{% url 'start' %}");
+            }  
+        //-->
+
+    </SCRIPT>
+    
+</body>
+</html>
