@@ -15,12 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from test_app.views import start, loginpage, logoutuser, register, startt, game, play, postsigin, postsignup, gamechoice, hot, ko, duell, casual, warn, addName, addNameCasual, addNameDuell, addNameNormal, addNameHot, deleteTodoView, deleteTodoViewCasual, deleteTodoViewDuell, deleteTodoViewHot, deleteTodoViewKo
+from test_app.views import questiondb1, questiondb2,questiondb3,questiondb4,questiondb5, start, loginpage, admind, logoutuser, register, startt, game, play, postsigin, postsignup, gamechoice, hot, ko, duell, casual, warn, addName, addNameCasual, addNameDuell, addNameNormal, addNameHot, deleteTodoView, deleteTodoViewCasual, deleteTodoViewDuell, deleteTodoViewHot, deleteTodoViewKo
 from django.views.generic.base import TemplateView
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path('questiondb1/', questiondb1),
+    path('questiondb2/', questiondb2),
+    path('questiondb3/', questiondb3),
+    path('questiondb4/', questiondb4),
+    path('questiondb5/', questiondb5),
+    path('admind/', admind, name='admind'),
     path('deleteTodoItemCasual/<int:i>/', deleteTodoViewCasual),
     path('deleteTodoItemDuell/<int:i>/', deleteTodoViewDuell),
     path('deleteTodoItemHot/<int:i>/', deleteTodoViewHot),
@@ -49,4 +56,4 @@ urlpatterns = [
     re_path('accounts/profile/', startt),
     path('postsignin/', postsigin, name='postsignin'),
     path('postsignup/', postsignup, name="postsignup")
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
