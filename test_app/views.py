@@ -2,7 +2,7 @@
 
 import random
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib import messages
 from .forms import CreateUserForm
 from .models import questions, koo, questionshot, gamesss, casuall, duelll
@@ -20,12 +20,57 @@ from django.http import HttpResponseRedirect
 
 
 # Create your views here.
+def questiondb1(request):
+    modus = "0815"
+    all_items = questions.objects.all()
+    return render(request ,'questiondb.html', {'all_items' : all_items, 'modus' : modus})
+def questiondb2(request):
+    modus = "Duell"
+    all_items = duelll.objects.all()
+    return render(request ,'questiondb.html', {'all_items' : all_items, 'modus' : modus})
+def questiondb3(request):
+    modus = "K.O."
+    all_items = koo.objects.all()
+    return render(request ,'questiondb.html', {'all_items' : all_items, 'modus' : modus})
+def questiondb4(request):
+    modus = "Casual"
+    all_items = casuall.objects.all()
+    return render(request ,'questiondb.html', {'all_items' : all_items, 'modus' : modus})
+def questiondb5(request):
+    modus = "Hot"
+    all_items = questionshot.objects.all()
+    return render(request ,'questiondb.html', {'all_items' : all_items, 'modus' : modus})
 def warn(request):
     request.session['warning'] = 1
     print('warning was accepted!')
     return render(request, 'warn.html')
 
-
+def admind(request):
+    games = gamesss.objects.all()
+    User = get_user_model()
+    users = len(User.objects.all())
+    Normal = len(questions.objects.all())
+    print(Normal)
+    Duell = len(duelll.objects.all()) 
+    ko = len(koo.objects.all())
+    Casual = len(casuall.objects.all())
+    Hot = len(questionshot.objects.all())
+    i = 0
+    gamesequal = []
+    gamenum = 0
+    
+    while i < len(games):
+        
+        if games[i].gameid in gamesequal:
+            print("Already")
+        else:
+            gamesequal.append(games[i].gameid)
+            gamenum = gamenum + 1
+       
+        
+        i = i + 1
+    
+    return render(request, 'admind.html', {'Normal' : Normal, 'duell' : Duell, 'KO' : ko, 'Casual' : Casual, 'Hot' : Hot, 'users' : users, 'games' : gamenum})
 def postsignup(request):
     password2 = request.POST.get('password2')
     email = request.POST.get('email')
