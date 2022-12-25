@@ -411,17 +411,16 @@ def inserttabels(request):
             teststring = []
             i = 0
             while i < len(readstring):
-                teststring.append([readstring[i], False])
+                if "#" in str(readstring[i]):
+                    teststring.append([readstring[i], True])
+                else:
+                    if "§" in readstring[i]:
+                        teststring.append([readstring[i], True])
+                    else:
+                        teststring.append([readstring[i], False])
                 i = i + 1
             print(teststring)
 
-            i = 0
-            while i < len(teststring):
-                if str(teststring[i]).count("#") > 0 or str(teststring[i]).count("§"):
-                    teststring[i].append(True)
-                else:
-                    teststring[i].append(False)
-                i = i+1
 
             while len(teststring) > i:
                 print(questions.objects.create(question = teststring[i][0], withname = teststring[i][1]))
