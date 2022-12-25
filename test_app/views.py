@@ -423,7 +423,7 @@ def inserttabels(request):
 
             i = 0
             while len(teststring) > i:
-                print(questions.objects.create(question = teststring[i][0], withname = teststring[i][1]))
+                questions.objects.create(question = teststring[i][0], withname = teststring[i][1])
                 i = i+1
     else:
         return redirect('/admin/')
