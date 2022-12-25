@@ -12,7 +12,7 @@ import json
 
 import random
 from django.http import HttpResponseRedirect
-
+from django.contrib.auth.decorators import user_passes_test
 
 
 
@@ -20,6 +20,8 @@ from django.http import HttpResponseRedirect
 
 
 # Create your views here.
+def admin_check(user):
+    return user.is_superuser
 def getcommand(request):
     normal_data = list(questions.objects.all())
     causal_data = list(casuall.objects.all())
@@ -400,6 +402,8 @@ def deleteTodoViewKo(request, i):
     y = gamesss.objects.get(id= i)
     y.delete()
     return HttpResponseRedirect('/ko/') 
+
+@user_passes_test(admin_check)
 def inserttabels(request):
     user = str(request.user)
     if request.user.is_authenticated:
