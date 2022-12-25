@@ -63,7 +63,7 @@
     </h1>
 <div class="dragdrop" align="middle">
     <span id="hello-msg">Hallo, {{request.user}}!</span>
-    <form method="POST" action="">
+    <form method="POST" action="/uploadgames/">
         {% csrf_token %}
         <input type="text" name="file">
         <br>
