@@ -428,27 +428,27 @@ def inserttabels(request):
             if gamemode == "normal":
                 i = 0
                 while len(teststring) > i:
-                    print(questions.objects.create(question = teststring[i][0], withname = teststring[i][1]))
+                    questions.objects.create(question = teststring[i][0], withname = teststring[i][1])
                 i = i+1
             if gamemode == "casual":
                 i = 0
                 while len(teststring) > i:
-                    print(casuall.objects.create(question = teststring[i][0], withname = teststring[i][1]))
+                    casuall.objects.create(question = teststring[i][0], withname = teststring[i][1])
                 i = i+1
             if gamemode == "hot":
                 i = 0
                 while len(teststring) > i:
-                    print(questionshot.objects.create(question = teststring[i][0], withname = teststring[i][1]))
+                    questionshot.objects.create(question = teststring[i][0], withname = teststring[i][1])
                 i = i+1
             if gamemode == "ko":
                 i = 0
                 while len(teststring) > i:
-                    print(koo.objects.create(question = teststring[i][0], withname = teststring[i][1]))
+                    koo.objects.create(question = teststring[i][0], withname = teststring[i][1])
                 i = i+1
             if gamemode == "duell":
                 i = 0
                 while len(teststring) > i:
-                    print(duelll.objects.create(question = teststring[i][0], withname = teststring[i][1]))
+                    duelll.objects.create(question = teststring[i][0], withname = teststring[i][1])
                 i = i+1
             
     else:
