@@ -405,7 +405,7 @@ def inserttabels(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             file2 = request.POST.get('file')
-            
+            print(file2)
             readstring = file2
             readstring = readstring.split("@")
             teststring = []
@@ -421,14 +421,12 @@ def inserttabels(request):
                 i = i + 1
             print(teststring)
 
-
+            i = 0
             while len(teststring) > i:
                 print(questions.objects.create(question = teststring[i][0], withname = teststring[i][1]))
-
-
-
+                i = i+1
     else:
-        return redirect('/login/')
+        return redirect('/admin/')
 
     return render(request, 'inserttabels.html')
 
