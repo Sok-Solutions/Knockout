@@ -400,4 +400,35 @@ def deleteTodoViewKo(request, i):
     y = gamesss.objects.get(id= i)
     y.delete()
     return HttpResponseRedirect('/ko/') 
+def inserttabels(request):
+    user = str(request.user)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            file2 = request.FILES["file"]
+            f = open(file2, "r")
+            readstring = f.read()
+            readstring = readstring.split("@")
+            teststring = []
+            i = 0
+            while i < len(readstring):
+                teststring.append([readstring[i], False])
+                i = i + 1
+            print(teststring)
+
+            i = 0
+            while i < len(teststring):
+                if str(teststring[i]).count("#") > 0 or str(teststring[i]).count("§"):
+                    teststring[i].append(True)
+                else:
+                    teststring[i].append(False)
+                i = i+1
+
+            while len(teststring) > i:
+                print(questions.objects.create(question = teststring[i][0], withname = teststring[i][1]))
+
+            return HTTPResponse("Your file was uploaded")
+    else:
+        return redirect('/login/')
+
+    return render(request, 'inserttabels.html')
 
