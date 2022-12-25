@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path('getdb/', getcommand),
     path('questiondb1/', questiondb1),
     path('questiondb2/', questiondb2),
     path('questiondb3/', questiondb3),
