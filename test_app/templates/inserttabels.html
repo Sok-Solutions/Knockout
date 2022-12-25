@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions Upload-Page</title>
+    <style>
+        h1 {
+            top: 200px;
+            color: #2596be;
+            font-size: 3rem;
+            text-align: center;
+            font-family: sans-serif;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+        input[type='file'] {
+            border: 3px dashed #999;
+            padding: 140px 50px 10px 50px;
+            cursor: move;
+            position:relative;
+        }
+        input[type='file']:before {
+            content: "drag & drop your files here";
+            display: block;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 40px;
+            margin: -25px 0 0 -100px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #999;
+        }
+        .senden{
+            float: left;
+            width: 6,5%;
+            margin-right: 10px;
+            background-color: #2596be;
+            border: none;
+            border-radius: 2px;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            font-family: 'Lexend Deca', sans-serif;
+            opacity: 0.95;
+        }
+        .senden:hover {
+        background-color:#2596be;
+         color: white;
+        transform: scale(1.1) perspective(1px)
+         }
+         div.dragdrop{
+            position: absolute;
+            right: 36%;
+         }
+    </style>
+</head>
+<body>
+    <h1>
+        Questions Upload-Page
+    </h1>
+<div class="dragdrop" align="middle">
+    <span id="hello-msg">Hallo, {{request.user}}!</span>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file">
+        <br>
+        <input type="submit" class="senden">
+    </form>
+</div>
+    
+</body>
+</html>
