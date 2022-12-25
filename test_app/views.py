@@ -405,8 +405,8 @@ def inserttabels(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             file2 = request.FILES["file"]
-            f = open(file2, "r")
-            readstring = f.read()
+            
+            readstring = file2
             readstring = readstring.split("@")
             teststring = []
             i = 0
@@ -414,7 +414,7 @@ def inserttabels(request):
                 if "#" in str(readstring[i]):
                     teststring.append([readstring[i], True])
                 else:
-                    if "§" in readstring[i]:
+                    if "§" in str(readstring[i]):
                         teststring.append([readstring[i], True])
                     else:
                         teststring.append([readstring[i], False])
