@@ -20,6 +20,14 @@ from django.http import HttpResponseRedirect
 
 
 # Create your views here.
+def getcommand(request):
+    normal_data = list(questions.objects.all())
+    causal_data = list(casuall.objects.all())
+    hot_data = list(questionshot.objects.all())
+    ko_data = list(koo.objects.all())
+    duell_data = list(duelll.objects.all())
+    return render(request, 'getcommand.html', {'data_0815' : normal_data, 'data_casual' : causal_data, 'data_hot' : hot_data, 'data_ko' : ko_data, 'data_duell' : duell_data})
+
 def questiondb1(request):
     modus = "0815"
     all_items = questions.objects.all()
