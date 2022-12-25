@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('uploadgames/', inserttabels),
+    path('insertindb/', inserttabels),
     path('getdb/', getcommand),
     path('questiondb1/', questiondb1),
     path('questiondb2/', questiondb2),
