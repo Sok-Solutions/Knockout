@@ -429,27 +429,27 @@ def inserttabels(request):
                 i = 0
                 while len(teststring) > i:
                     questions.objects.create(question = teststring[i][0], withname = teststring[i][1])
-                i = i+1
+                    i = i+1
             if gamemode == "casual":
                 i = 0
                 while len(teststring) > i:
                     casuall.objects.create(question = teststring[i][0], withname = teststring[i][1])
-                i = i+1
+                    i = i+1
             if gamemode == "hot":
                 i = 0
                 while len(teststring) > i:
                     questionshot.objects.create(question = teststring[i][0], withname = teststring[i][1])
-                i = i+1
+                    i = i+1
             if gamemode == "ko":
                 i = 0
                 while len(teststring) > i:
                     koo.objects.create(question = teststring[i][0], withname = teststring[i][1])
-                i = i+1
+                    i = i+1
             if gamemode == "duell":
                 i = 0
                 while len(teststring) > i:
                     duelll.objects.create(question = teststring[i][0], withname = teststring[i][1])
-                i = i+1
+                    i = i+1
             
     else:
         return redirect('/admin/')
