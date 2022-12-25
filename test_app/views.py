@@ -404,7 +404,7 @@ def inserttabels(request):
     user = str(request.user)
     if request.user.is_authenticated:
         if request.method == "POST":
-            file2 = request.FILES["file"]
+            file2 = request.POST.get('file')
             
             readstring = file2
             readstring = readstring.split("@")
