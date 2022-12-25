@@ -1,7 +1,7 @@
 
 
 import random
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib import messages
 from .forms import CreateUserForm
@@ -425,7 +425,8 @@ def inserttabels(request):
             while len(teststring) > i:
                 print(questions.objects.create(question = teststring[i][0], withname = teststring[i][1]))
 
-            
+            return HTTPResponse("Your file was uploaded")
+
     else:
         return redirect('/login/')
 
