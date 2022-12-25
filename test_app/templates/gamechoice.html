@@ -105,7 +105,7 @@
         }
     }
 
-    p  { color: #FFFFFF;}
+    p  { color: #022842;}
     h1 { color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 55px; font-weight: 800; line-height: 72px; margin: 0 0 1px; text-align: center; text-transform: uppercase; }
     h1:hover{
         cursor: context-menu;
@@ -117,7 +117,7 @@
         cursor: context-menu;
 
     }
-    body {line-height: 1.6; height: 100vh; overflow: hidden;}
+    body {line-height: 1.6; height: 100vh; overflow: hidden; background-color: #022842;}
     .container {
         width: 100%; 
         height: 100%;
@@ -165,7 +165,7 @@
         background: #022842 no-repeat center center/cover;;
     }
     /* Section Images */
-    h3 { transition: 0.3s;color: #FAAB05; font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: left; text-transform: uppercase; text-align: center;}
+    h3 { transition: 0.3s;color: #FAAB05; font-family: 'Raleway',sans-serif; font-size: 25px; margin-left: 20px;}
     h3:hover {
         color: #C2B8E0;
         cursor:context-menu;
@@ -193,13 +193,14 @@
     border-color: #C2B8E0;
 }
 .gamebox{
-    height: 300px;
+    height: 80px;
     width: 250px;
-    border: 3px solid #ffffff;
+    border: 3px solid #b3b1b1;
     margin-top: 10px;
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
     border-radius: 25px;
+    background-color: white;
 }
 .gamebox:hover{
     background-color: #0b588b;
@@ -213,16 +214,16 @@
     <div class="container">
     <section id="start">
         <div class="gamebox" name="nomalmode" onclick="normalmode()">
-            <h3 style="font-family: 'Montserrat';">0815</h3>
-            {% load static %} <img style="width:50px ;height:50px;" src="https://i.ibb.co/BBnDv85/shot.png" alt="Shot"> 
-            <p>Am besten um in einen Abend zu starten!</p>
-            <p>3 bis 15 Spieler sind perfekt für diesen Modus!</p>
+        <img src="https://i.ibb.co/9TWPZVx/New-Project-8.png" alt="Shot"> 
         </div>
         <div class="gamebox" name="nomalmode" onclick="casualmode()">
-            <h3 style="font-family: 'Montserrat';">Casual</h3>
-            {% load static %} <img style="width:50px ;height:50px;" src="https://i.ibb.co/BBnDv85/shot.png" alt="Shot"> 
-            <p>Am besten um in einen Abend zu starten!</p>
-            <p>3 bis 15 Spieler sind perfekt für diesen Modus!</p>
+            <img src="https://i.ibb.co/Tmsxq7v/New-Project-6.png" alt="Shot"> 
+        </div>
+        <div class="gamebox" name="nomalmode" onclick="komode()">
+        <img src="https://i.ibb.co/L5Pn7Nk/New-Project-9.png" alt="GLOVES">
+        </div>
+        <div class="gamebox" name="Hot" onclick="hotmode()">
+        <img src="https://i.ibb.co/KqB7pBt/New-Project-10.png" alt="Flame">
         </div>
     </section> 
     <section id="start2">
