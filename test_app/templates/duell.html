@@ -24,11 +24,10 @@
         width: 100%;
         height: 100vh;
         scroll-snap-align: center;
-        background: #022842 no-repeat center center/cover;
+        background: #0060A6 no-repeat center center/cover;
     }
-    h3 {transition: 0.3s;color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; line-height: 20px; margin: 0 0 10px; text-align: left; text-transform: uppercase; text-align: center;}
+    h3 {transition: 0.3s;color: #FFD400; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; line-height: 20px; margin: 0 0 10px; text-align: left; text-transform: uppercase; text-align: center;}
     h3:hover {
-        color: #C2B8E0;
         cursor:context-menu;
     }
     .namestext{
@@ -136,7 +135,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-.feedback-input:focus { border:2px solid #FAAB05; }
+.feedback-input:focus { border:2px solid #FFD400; }
 .feedback-input {
   color:#E6e6e6;
   font-family: Helvetica, Arial, sans-serif;
@@ -145,7 +144,7 @@ input:checked + .slider:before {
   border-radius: 20px;
   line-height: 22px;
   background-color: transparent;
-  border:2px solid #E6e6e6;
+  border:2px solid #FFD400;
   transition: all 0.3s;
   padding: 13px;
   margin-bottom: 15px;
@@ -158,7 +157,7 @@ input:checked + .slider:before {
 }
 .button-19 {
   appearance: button;
-  background-color: #d69404;
+  background-color: #FFD400;
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
@@ -189,7 +188,7 @@ input:checked + .slider:before {
 
 .button-19:after {
   background-clip: padding-box;
-  background-color: #FAAB05;
+  background-color: #FFD400;
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
@@ -222,6 +221,9 @@ input:checked + .slider:before {
     cursor: pointer;
     height: 30px;
 }
+body{
+  background-color: #0060A6;
+}
 </style>
 </head>
 <body>
@@ -236,7 +238,7 @@ input:checked + .slider:before {
         <div class="names">
           {% for row in all_names %}
           <form action="/deleteTodoItemDuell/{{row.id}}/" method = "post">{% csrf_token %}
-          <h3 class="namestext"style="margin-top:20px ; margin-bottom:20px;">{{row.name}}
+          <h3 class="namestext"style="margin-top:20px ; color:#FFD400; margin-bottom:20px;">{{row.name}}
                   <input type="submit" value="&#10008;" class="del"><h3></form>
               
           {% endfor %}
