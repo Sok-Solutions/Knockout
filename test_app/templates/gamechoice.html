@@ -14,110 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
     <style>
-.color1 {color: #000000;}
-.color2 {color: #022842;}
-.color3 {color: #0f6193;}
-.color4 {color: #1ba3f0;}
-.color5 {color: #1cedff;}
-/* CSS */
-.button-19 {
-  appearance: button;
-  background-color: #d69404;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: din-round,sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: .8px;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  overflow: visible;
-  padding: 13px 16px;
-  text-align: center;
-  text-transform: uppercase;
-  touch-action: manipulation;
-  transform: translateZ(0);
-  transition: filter .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
-}
-
-.button-19:after {
-  background-clip: padding-box;
-  background-color: #FAAB05;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.button-19:main,
-.button-19:focus {
-  user-select: auto;
-}
-
-.button-19:hover:not(:disabled) {
-  filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
-}
-
-.button-19:disabled {
-  cursor: auto;
-}
-    animate-charcter
-        {
-            text-transform: uppercase;
-            background-image: linear-gradient(
-                    -225deg,
-                    #1ba3f0 0%,
-                    #0f6193 29%,
-                    #1ba3f0 67%,
-                    #0f6193 100%
-            );
-            background-size: auto auto;
-            background-clip: border-box;
-            background-size: 200% auto;
-            color: #ffffff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textclip 2s linear infinite;
-        }
-        
-    @keyframes textclip {
-        to {
-            background-position: 200% center;
-        }
-    }
-
-    p  { color: #022842;}
-    h1 { color: #FAAB05; font-family: 'Montserrat', sans-serif; font-size: 55px; font-weight: 800; line-height: 72px; margin: 0 0 1px; text-align: center; text-transform: uppercase; }
-    h1:hover{
-        cursor: context-menu;
-    }
-    
-    p:hover{
-        background-color: rgba(0, 0, 0, 0.021);
-        color:#C2B8E0;
-        cursor: context-menu;
-
-    }
-    body {line-height: 1.6; height: 100vh; overflow: hidden; background-color: #022842;}
+    body {line-height: 1.6; height: 100vh; overflow: hidden; background-color: #0060A6;}
     .container {
         width: 100%; 
         height: 100%;
@@ -125,34 +22,7 @@
         scroll-behavior: smooth;
         scroll-snap-type: y mandatory;
     }
-    .navbar{
-        font-family: 'Raleway',sans-serif;
-        position: fixed;
-        top: 0;
-        z-index: 1;
-        display: flex;
-        width: 100%;
-        height: 60px;
-        background: rgba(0, 0, 0, 0.7);
-    }
-    .navbar ul {
-        display: flex;
-        list-style: none;
-        width: 100%;
-        justify-content: center;
-    }
-    .navbar ul li {
-        margin: 0 1rem;
-        padding: 1rem;
-    }
-    .navbar ul li a {
-        text-decoration: none;
-        text-transform: uppercase;
-        color: #f4f4f4;
-    }
-    .navbar ul li a:hover {
-        color: C2B8E0;
-    }
+    
     section {
         display: flex;
         flex-direction: column;
@@ -162,68 +32,49 @@
         width: 100%;
         height: 100vh;
         scroll-snap-align: center;
-        background: #022842 no-repeat center center/cover;;
+        background: #0060A6 no-repeat center center/cover;;
     }
-    /* Section Images */
-    h3 { transition: 0.3s;color: #FAAB05; font-family: 'Raleway',sans-serif; font-size: 25px; margin-left: 20px;}
-    h3:hover {
-        color: #C2B8E0;
-        cursor:context-menu;
-    }
-    
-    p {font-family: 'Montserrat', sans-serif;transition: 0.3s;font-weight: bold;}
-.feedback-input:focus { border:2px solid #C2B8E0; }
-.feedback-input {
-  color:#E6e6e6;
-  font-family: Helvetica, Arial, sans-serif; 
-  font-weight:500;
-  font-size: 18px;
-  border-radius: 5px;
-  line-height: 22px;
-  background-color: transparent;
-  border:2px solid #E6e6e6;
-  transition: all 0.3s;
-  padding: 13px;
-  margin-bottom: 15px;
-  width:100%;
-  box-sizing: border-box;
-  outline:0;
-}
-.feedback-input:hover{
-    border-color: #C2B8E0;
-}
+
 .gamebox{
     height: 80px;
     width: 250px;
-    border: 3px solid #b3b1b1;
+    border: 3px solid black;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: left;
-    border-radius: 25px;
+    border-radius: 3px;
     background-color: white;
 }
 .gamebox:hover{
     background-color: #0b588b;
     cursor: pointer;
-    border: 5px solid #ffffff;
+    border: 5px solid black;
 }
-
+img{
+    width: 250px;
+    height: 80px;
+}
+h3 {transition: 0.3s;color: #FFD400; font-family: 'Montserrat', sans-serif; font-size: 60px; font-weight: 800; line-height: 20px; margin-bottom: 30px; text-align: left; text-transform: uppercase; text-align: center;}
+      h3:hover {
+          cursor:context-menu;
+      }
     </style>
 </head>
 <body>
     <div class="container">
     <section id="start">
+        <h3>Modus</h3>
         <div class="gamebox" name="nomalmode" onclick="normalmode()">
-        <img src="https://i.ibb.co/9TWPZVx/New-Project-8.png" alt="Shot"> 
+        <img src="https://i.ibb.co/YDy7YpH/hottttt.png" alt="Shot"> 
         </div>
         <div class="gamebox" name="nomalmode" onclick="casualmode()">
-            <img src="https://i.ibb.co/Tmsxq7v/New-Project-6.png" alt="Shot"> 
+            <img src="https://i.ibb.co/R4FR5WR/casual.gif" alt="Shot"> 
         </div>
-        <div class="gamebox" name="nomalmode" onclick="komode()">
-        <img src="https://i.ibb.co/L5Pn7Nk/New-Project-9.png" alt="GLOVES">
+        <div class="gamebox" name="nomalmode" onclick="duellmode()">
+        <img src="https://i.ibb.co/ssBC202/duell.gif" alt="GLOVES">
         </div>
         <div class="gamebox" name="Hot" onclick="hotmode()">
-        <img src="https://i.ibb.co/KqB7pBt/New-Project-10.png" alt="Flame">
+        <img src="https://i.ibb.co/xHjsQpd/hot.png" alt="Flame">
         </div>
     </section> 
     <section id="start2">
