@@ -22,64 +22,13 @@
 .color4 {color: #1ba3f0;}
 .color5 {color: #1cedff;}
 /* CSS */
-.button-19 {
-  appearance: button;
-  background-color: #d69404;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: din-round,sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: .8px;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  overflow: visible;
-  padding: 13px 16px;
-  text-align: center;
-  text-transform: uppercase;
-  touch-action: manipulation;
-  transform: translateZ(0);
-  transition: filter .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
-}
-
-.button-19:after {
-  background-clip: padding-box;
-  background-color: #FAAB05;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.button-19:main,
-.button-19:focus {
-  user-select: auto;
-}
-
-.button-19:hover:not(:disabled) {
-  filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
-}
-
-.button-19:disabled {
-  cursor: auto;
+.button-19{
+  background-color: #FFD400;
+  color: #EF4136;
+  font-family: 'Montserrat', sans-serif;
+  border-color: #000;
+  border-radius: 5px;
+  font-weight: bold;
 }
     animate-charcter
         {
@@ -119,7 +68,7 @@
         cursor: context-menu;
 
     }
-    body {line-height: 1.6; height: 100vh; overflow: hidden; background-color: #022842;}
+    body {line-height: 1.6; height: 100vh; overflow: hidden; background-color: #0060A6;}
     .container {
         width: 100%; 
         height: 100%;
@@ -163,7 +112,7 @@
         width: 100%;
         height: 100vh;
         scroll-snap-align: center;
-        background: #022842 no-repeat center center/cover;
+        background: #0060A6 no-repeat center center/cover;
     }
     /* Section Images */
     h3 { transition: 0.3s;color: #FAAB05; font-family: 'Raleway',sans-serif; font-size: 35px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: left; text-transform: uppercase; text-align: center;}
@@ -264,6 +213,7 @@
 .logo{
   width: 500px;
   height: 500px;
+  cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
   .logo{
@@ -284,12 +234,12 @@
             </nav>-->
     <section id="start">
         <!--{% load static %} <img  src="{% static "LongDrink-removebg-preview.png" %}" alt="TitleIMG">    -->
-        <img class="logo" src="https://i.ibb.co/98Nr8kJ/Whats-App-Image-2022-12-09-at-11-38-48.jpg" alt="Logout">
-        <button onclick="createroom()" style="width: 35%;" class="button-19">START</button>
+        <img onclick="createroom()" class="logo" src="https://i.ibb.co/ZY2Grwy/Bild-logo.png" alt="Logout">
+        <!--<button onclick="createroom()"><img src="https://i.ibb.co/yqHSgLq/play-button.png" alt=""></button>
         <div id="Regeln">
-            <button id="myBtn" class="button-19" style="margin-top: 20px; height: 42px; width: 120px;" margin-top: 20px; height: 40px; width: 100px;">Regeln</button>
+            <button id="myBtn" style="margin-top: 20px; height: 30px; width: 120px;">Regeln</button>
             
-        </div>
+        </div>-->
         <div id="myModal" class="modal">
 
             <!-- Modal content -->
